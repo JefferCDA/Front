@@ -1,0 +1,63 @@
+<div>
+    <form [formGroup] = 'form' (submit)="createProduct()">
+        <div class="from-group">
+            <h2>Registro Producto</h2>
+            <div>
+                Nombre <input formControlName="name">
+            </div>
+            <div>
+                Descripcion <input formControlName="description">
+            </div>
+            <div>
+                Precio <input formControlName="price">
+            </div>
+            <div>
+                Marca <input formControlName="brand">
+            </div>
+            <div>
+                Imagen <input formControlName="url">
+            </div> 
+            <div>
+                <button  >Enviar</button>
+            </div>
+        </div>
+    </form>
+    <form [formGroup] = 'form' (submit)="updateProduct()">
+        <div class="from-group-update">
+            <h2>Actualizar Producto</h2>
+            <div>
+                Id product actualizar <input formControlName="productId">
+            </div>
+            <div>
+                Nombre <input formControlName="name">
+            </div>
+            <div>
+                Descripcion <input formControlName="description">
+            </div>
+            <div>
+                Precio <input formControlName="price">
+            </div>
+            <div>
+                Marca <input formControlName="brand">
+            </div>
+            <div>
+                Imagen <input formControlName="url">
+            </div> 
+            <div>
+                <button  >Enviar</button>
+            </div>
+        </div>
+    </form>
+    <form [formGroup] = 'form' (submit)="deleteProduct()">
+        <div class="from-group-update">
+            <h2>Borarr Producto</h2>
+            <div>
+                Id product a borrar <input formControlName="productId">
+            </div>
+            <div>
+                <button  >Enviar</button>
+            </div>
+        </div>
+    </form>
+    <textarea name="txtContent" rows="10"></textarea>
+</div>
