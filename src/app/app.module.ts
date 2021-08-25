@@ -5,16 +5,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsModule } from './products/products.module';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { ProductsOpsComponent } from './products/components/products-ops/products-ops.component';
+import { SharedModule } from './shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    ProductsOpsComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +19,8 @@ import { ProductsOpsComponent } from './products/components/products-ops/product
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ProductsModule
+    ProductsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
