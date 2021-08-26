@@ -1,7 +1,15 @@
-nav > a {
-    padding: 8px;
+nav > button {
+    padding: 4px;
     text-decoration: none;
 }
+/*
 nav > a.active {
     background-color: dimgray;
+}
+*/
+:host {
+    margin: 6px;
+    border:  2px;
+    border-radius: 5px;
+    display: block;
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../core/services/products/products.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Product } from 'src/app/product.model';
+
 
 
 @Component({
@@ -9,33 +12,22 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  product: Product[];
   public form: FormGroup;
   constructor(
     private productsService: ProductsService,
     private formBuilder: FormBuilder,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.loadProducts();
-    this.loadProduct(2);
-    this.formBuilderCreate();
-  }
-  
-  private formBuilderCreate() {
-    this.form = this.formBuilder.group({
-      productId: [], 
-      name: [],
-      description: new FormControl(),
-      price: [],
-      brand: [],
-      url: [],
-    })
   }
 
   public loadProducts() {
     this.productsService.getAllProducts().subscribe(res => {
-    console.log(res);
-      
+      this.product = res.result;
+      console.log(this.product);
     });
   }
   public loadProduct(id: number) {
@@ -53,23 +45,42 @@ export class ProductsComponent implements OnInit {
     })
   }
   public updateProduct() {
-    console.log(this.form.value);
-    this.productsService.putProduct(
-      this.form.value.productId,
-      this.form.value
-    ).subscribe(res => {
-      console.log(res); 
-      this.form.reset();
-    })
+    try {
+      this.productsService.putProduct(
+        this.form.value.productId,
+        this.form.value
+      ).subscribe(res => {
+        console.log(res);
+        this.form.reset();
+      })
+    } catch (error) {
+      console.log(error);
+    }
+
   }
-  public deleteProduct() {
-    console.log(this.form.value);
-    this.productsService.deleteProduct(
-      this.form.value.productId
-    ).subscribe(res => {
-      console.log(res);
-      this.form.reset();
-    })
+  public deleteProduct(productId: number) {
+    try {
+      this.productsService.deleteProduct(productId)
+        .subscribe(res => {
+          this.loadProducts();
+        })
+    } catch (error) {
+      console.log(error);
+    }
+
+
+  }
+  navigation(url: string, productId: number) {
+    
+    // switch (productId) {
+    //   case 0:
+    //     this.router.navigate([`${url}/${0}`]);
+    //     break;
+    //   default:
+    //     this.router.navigate([`${url}/${productId}`]);
+    //     break;
+    // }
+
   }
 
 }

@@ -1,63 +1,26 @@
-<div>
-    <form [formGroup] = 'form' (submit)="createProduct()">
-        <div class="from-group">
-            <h2>Registro Producto</h2>
-            <div>
-                Nombre <input formControlName="name">
-            </div>
-            <div>
-                Descripcion <input formControlName="description">
-            </div>
-            <div>
-                Precio <input formControlName="price">
-            </div>
-            <div>
-                Marca <input formControlName="brand">
-            </div>
-            <div>
-                Imagen <input formControlName="url">
-            </div> 
-            <div>
-                <button  >Enviar</button>
-            </div>
-        </div>
-    </form>
-    <form [formGroup] = 'form' (submit)="updateProduct()">
-        <div class="from-group-update">
-            <h2>Actualizar Producto</h2>
-            <div>
-                Id product actualizar <input formControlName="productId">
-            </div>
-            <div>
-                Nombre <input formControlName="name">
-            </div>
-            <div>
-                Descripcion <input formControlName="description">
-            </div>
-            <div>
-                Precio <input formControlName="price">
-            </div>
-            <div>
-                Marca <input formControlName="brand">
-            </div>
-            <div>
-                Imagen <input formControlName="url">
-            </div> 
-            <div>
-                <button  >Enviar</button>
-            </div>
-        </div>
-    </form>
-    <form [formGroup] = 'form' (submit)="deleteProduct()">
-        <div class="from-group-update">
-            <h2>Borarr Producto</h2>
-            <div>
-                Id product a borrar <input formControlName="productId">
-            </div>
-            <div>
-                <button  >Enviar</button>
-            </div>
-        </div>
-    </form>
-    <textarea name="txtContent" rows="10"></textarea>
+<button (click)="navigation('products', 0)" >Crear producto</button>
+<div class="product-grid">
+  <div class="product-container" *ngFor="let product of product">
+    <div class="header-card">
+      <strong> {{ product.name | uppercase}}</strong>
+      <button (click)="deleteProduct(product.productId)">Borrar </button>
+    </div>
+    <img [src]="product.url" alt="">
+    <div class="footer-card">
+      <button (click)="navigation('products', product.productId)">Opciones de Producto</button>
+      <strong>{{ product.price |currency }}</strong>
+      <strong>Marca: </strong>{{product.brand }}
+      {{ product.description | slice:0:20 }} ...
+    </div>
+  </div> 
+</div>
+<div class="modalc">
+  <div class="modalc-content">
+    <div class="modal-header">
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer"> 
+    </div>
+  </div>
 </div>

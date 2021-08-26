@@ -1,0 +1,32 @@
+:host {
+    margin: 6px;
+    border:  2px;
+    border-radius: 5px;
+    display: block;
+}
+.product-container {
+    margin: 6px;
+    border:  2px solid black;
+    border-radius: 5px;
+    display: block;
+}
+.header-card {
+    display:flex ;
+    justify-content: space-between;
+    padding: 4px;
+}
+.header-card > button {
+    justify-content: flex-end;
+}
+.footer-card {
+    display:flex ;
+    flex-direction: column ;
+    padding: 4px;
+}
+.footer-card > button {
+    justify-content: flex-end;
+}
+
+img {
+    max-width:  100%;
+}

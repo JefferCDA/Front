@@ -1,1 +1,7 @@
-<p>banner works!</p>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let item of images">
+            <img [src]="item" alt="Imagen de banner">
+        </div>
+    </div>
+</div>

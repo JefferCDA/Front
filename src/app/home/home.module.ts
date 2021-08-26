@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { BannerComponent } from './components/banner/banner.component';
-
+import { HomeRoutingModule } from './home-routing.module';
 
 
 @NgModule({
@@ -13,10 +13,11 @@ import { BannerComponent } from './components/banner/banner.component';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    HomeRoutingModule
   ],
   exports: [
-    HomeComponent
+    HomeComponent,
   ]
 })
 export class HomeModule { }
