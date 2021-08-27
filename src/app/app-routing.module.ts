@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+import { ModalComponent } from './shared/components/modals/modal/modal.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'products',
     loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+  }
+  ,{
+    path: 'modal',
+    component: ModalComponent
   }
 
 ];

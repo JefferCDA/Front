@@ -12,10 +12,11 @@ import { LayoutComponent } from './layout/layout.component';
 import { HomeModule } from './home/home.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,

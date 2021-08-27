@@ -30,3 +30,16 @@
 img {
     max-width:  100%;
 }
+.from-update > button {
+    justify-content: flex-end;
+}
+.inputs{
+    input{
+        display: block;
+        padding: 4px;
+    }
+}
+.btnOps{
+    margin: 5px;
+    padding: 8px;
+}

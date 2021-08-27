@@ -1,7 +1,6 @@
 <div>
     <form [formGroup] = 'form' (submit)="createProduct()">
         <div class="from-create">
-            <h2>Registro Producto</h2>
             <div>
                 Nombre <input formControlName="name">
             </div>
@@ -18,13 +17,12 @@
                 Imagen <input formControlName="url">
             </div> 
             <div>
-                <button  >Enviar</button>
+                <button  class="btnCreate">Enviar</button>
             </div>
         </div>
     </form>
     <form [formGroup] = 'form' (submit)="updateProduct()">
         <div class="from-update">
-            <h2>Actualizar Producto</h2>
             <div>
                 Id product actualizar <input formControlName="productId">
             </div>
@@ -44,7 +42,7 @@
                 Imagen <input formControlName="url">
             </div> 
             <div>
-                <button  >Enviar</button>
+                <button class="btnUpdate">Enviar</button>
             </div>
         </div>
     </form>

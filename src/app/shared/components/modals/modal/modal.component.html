@@ -1,0 +1,15 @@
+<ng-container >
+  <div class="modalc">
+    <div class="modalc-content">
+      <div class="modalc-header">
+        <h4 class="modalc-title">
+          {{title}}
+        </h4>
+        <button class="bClose" (click)="modalShow()" >X</button>
+      </div>
+      <div class="modalc-body">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</ng-container>

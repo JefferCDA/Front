@@ -1,4 +1,57 @@
-<button (click)="navigation('products', 0)" >Crear producto</button>
+<button (click)="showModal('create','Crear Producto')">Crear producto</button>
+<app-modal *ngIf="showM" [title]="title" (clicked)="cModal($event)">
+  <div class="container-create" *ngIf="showM==='create'">
+
+    <form [formGroup]='form' (submit)="createProduct()">
+      <div class="from-create">
+        <div class="nameProdut">
+          Nombre <input formControlName="name">
+        </div>
+        <div class="descriptionProduct">
+          Descripcion <input formControlName="description">
+        </div>
+        <div class="priceProduct">
+          Precio <input formControlName="price">
+        </div>
+        <div class="brandProduct">
+          Marca <input formControlName="brand">
+        </div>
+        <div class="urlProduct">
+          Imagen <input formControlName="url">
+        </div>
+        <div class="btnOps">
+          <button class="btnCreate">Enviar</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="container-update" *ngIf="showM==='update'">
+    <form [formGroup]='form' (submit)="updateProduct()">
+      <div class="from-update">
+
+
+        <div class="inputs">
+          <label for="">Id product actualizar</label>
+          <input formControlName="productId">
+          <label for="">Nombre</label>
+          <input formControlName="name">
+          <label for="">Descripcion</label>
+          <input formControlName="description">
+          <label for="">Precio</label>
+          <input formControlName="price">
+          <label for="">Marca</label>
+          <input formControlName="brand"> 
+          <label for="">Imagen</label>    
+          <input formControlName="url">
+        </div>
+
+          <button class="btnOps">Enviar</button>
+
+      </div>
+    </form>
+  </div>
+</app-modal>
 <div class="product-grid">
   <div class="product-container" *ngFor="let product of product">
     <div class="header-card">
@@ -7,20 +60,10 @@
     </div>
     <img [src]="product.url" alt="">
     <div class="footer-card">
-      <button (click)="navigation('products', product.productId)">Opciones de Producto</button>
+      <button (click)="showModal('update','Actualizar Producto')">Opciones de Producto</button>
       <strong>{{ product.price |currency }}</strong>
       <strong>Marca: </strong>{{product.brand }}
       {{ product.description | slice:0:20 }} ...
-    </div>
-  </div> 
-</div>
-<div class="modalc">
-  <div class="modalc-content">
-    <div class="modal-header">
-    </div>
-    <div class="modal-body">
-    </div>
-    <div class="modal-footer"> 
     </div>
   </div>
 </div>

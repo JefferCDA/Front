@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../core/services/products/products.service';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Product } from 'src/app/product.model';
-
 
 
 @Component({
@@ -14,16 +12,30 @@ import { Product } from 'src/app/product.model';
 export class ProductsComponent implements OnInit {
   product: Product[];
   public form: FormGroup;
+  showM: String;
+  ops = true;
+  title: string;
+
   constructor(
     private productsService: ProductsService,
-    private formBuilder: FormBuilder,
-    private router: Router,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.loadProducts();
+    this.formBuilderCreate();
   }
 
+  private formBuilderCreate() {
+    this.form = this.formBuilder.group({
+      productId: [], 
+      name: [],
+      description: new FormControl(),
+      price: [],
+      brand: [],
+      url: [],
+    })
+  }
   public loadProducts() {
     this.productsService.getAllProducts().subscribe(res => {
       this.product = res.result;
@@ -58,6 +70,16 @@ export class ProductsComponent implements OnInit {
     }
 
   }
+  showModal(event: string, titlo: string) {
+    console.log(titlo);
+    this.showM = event;
+    this.title = titlo;
+  }
+  cModal(e: string) {
+    this.showM = e;
+    console.log(this.showM);
+  }
+
   public deleteProduct(productId: number) {
     try {
       this.productsService.deleteProduct(productId)
@@ -71,7 +93,7 @@ export class ProductsComponent implements OnInit {
 
   }
   navigation(url: string, productId: number) {
-    
+
     // switch (productId) {
     //   case 0:
     //     this.router.navigate([`${url}/${0}`]);
